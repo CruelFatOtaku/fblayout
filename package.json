@@ -16,5 +16,18 @@
   "bugs": {
     "url": "https://github.com/CruelFatOtaku/fblayout/issues"
   },
-  "homepage": "https://github.com/CruelFatOtaku/fblayout#readme"
+  "homepage": "https://github.com/CruelFatOtaku/fblayout#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^6.2.0",
+    "style-loader": "^3.2.1"
+  },
+  "dependencies": {
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "html-webpack-plugin": "^5.3.2",
+    "webpack": "^5.47.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
 }
