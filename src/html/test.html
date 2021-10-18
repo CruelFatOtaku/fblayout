@@ -1,0 +1,31 @@
+<html>
+  <script>
+    let socket = new WebSocket("ws://115.159.186.190:18001/ws");
+    // 监听socket连接
+    socket.onopen = () => {
+      console.log("连接成功！");
+
+    };
+    // 监听socket错误信息
+    socket.onerror  = () => {
+      console.log("错误");
+      
+    };
+    // 监听断开
+    socket.onclose   = () => {
+      console.log("断开");
+      
+    };
+    // 监听socket消息
+    socket.onmessage = (msg) => {
+      console.log("get Message: ", msg);
+    };
+    setInterval(
+      () => {
+        socket.send(
+        JSON.stringify({"flag":0,"storeId":6,"codeId":1})
+      )
+      }, 3000
+    )
+  </script>
+</html>
