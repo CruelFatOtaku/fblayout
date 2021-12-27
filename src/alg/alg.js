@@ -1,20 +1,19 @@
-var isValidSudoku = function(board) {
-  const rows = new Array(9).fill(0).map(() => new Array(9).fill(0));
-  const colomns = new Array(9).fill(0).map(() => new Array(9).fill(0));
-  const subBoxes = new Array(3).fill(0).map(() => new Array(3).fill(0).map(() => new Array(9).fill(0)));
-  for (let i = 0; i < 9; i ++) {
-      for (let j = 0; j < 9; j ++) {
-          if (board[i][j] !== ".") {
-              let index = board[i][j].charCodeAt() - "0".charCodeAt() - 1;
-              rows[i][index] ++;
-              colomns[j][index] ++;
-              subBoxes[Math.floor(i / 3)][Math.floor(j / 3)][index] ++;
-              if (rows[i][index] > 1 || colomns[j][index] > 1 || subBoxes[Math.floor(i / 3)][Math.floor(j / 3)][index] > 1) {
-                  return false;
-              }
+var minimumTotal = function(triangle) {
+  const dp = [triangle[0]];
+  for (let i = 1 ; i < triangle.length; i ++) {
+      let curr = [];
+      for (let j = 0; j <= i; j ++) {
+          if (j === 0) {
+            curr.push(dp[i - 1][j] + triangle[i][j]);
+          } else if (j === i) {
+            curr.push(dp[i - 1][j - 1] + triangle[i][j]);
+          } else {
+            curr.push(Math.min(dp[i - 1][j], dp[i - 1][j - 1]) + triangle[i][j]);
           }
       }
-  }
-  return true;
+      dp.push(curr);
+    }
+  return Math.min(...dp[dp.length - 1]);
 };
-isValidSudoku([["5","3",".",".","7",".",".",".","."],["6",".",".","1","9","5",".",".","."],[".","9","8",".",".",".",".","6","."],["8",".",".",".","6",".",".",".","3"],["4",".",".","8",".","3",".",".","1"],["7",".",".",".","2",".",".",".","6"],[".","6",".",".",".",".","2","8","."],[".",".",".","4","1","9",".",".","5"],[".",".",".",".","8",".",".","7","9"]]);
+
+console.log(minimumTotal([[2],[3,4],[6,5,7],[4,1,8,3]]));

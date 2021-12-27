@@ -33,17 +33,17 @@ var _EnventCenter = (function(){
   /**
    * 删除订阅
    * @key {String} 类型
-   * @fn {Function} 回掉函数
+   * @fn {Function} 回调函数
    * */
   unsubscribe = function(event, fn){
       var fns = subscribers[event];// 取出处理函数数组
       if(!fns){//没有订阅直接返回
           return false;
       }
-      if (!fn) {//如果没有传入具体的回掉，则表示需要取消所有订阅
+      if (!fn) {//如果没有传入具体的回调，则表示需要取消所有订阅
           fns && (fns.length = 0);
       } else {
-          for(let i = fns.length - 1; i >= 0; i--){//遍历回掉函数列表
+          for(let i = fns.length - 1; i >= 0; i--){//遍历回调函数列表
               if(fn === fns[i]){
                   fns.splice(i, 1);//删除订阅者
               }
